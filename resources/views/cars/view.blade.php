@@ -7,6 +7,7 @@
                 <thead>
                     <tr class="bg-gray-100">
                         <th class="border border-gray-300 px-4 py-2">User ID</th>
+                        <th class="border border-gray-300 px-4 py-2">License Plate</th>
                         <th class="border border-gray-300 px-4 py-2">Brand</th>
                         <th class="border border-gray-300 px-4 py-2">Model</th>
                         <th class="border border-gray-300 px-4 py-2">Price (€)</th>
@@ -27,6 +28,7 @@
                     @foreach ($cars as $car)
                         <tr class="hover:bg-gray-50">
                             <td class="border border-gray-300 px-4 py-2 text-center">{{ $car->user_id }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $car->license_plate }}</td>
                             <td class="border border-gray-300 px-4 py-2">{{ $car->brand }}</td>
                             <td class="border border-gray-300 px-4 py-2">{{ $car->model }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-right">€ {{ number_format($car->price, 2) }}</td>
