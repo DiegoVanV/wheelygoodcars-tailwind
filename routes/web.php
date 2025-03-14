@@ -17,6 +17,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/cars/index/', [CarController::class, 'index'])->name('cars.index');
+    Route::get('/cars/myCars/', [CarController::class, 'viewMyCars'])->name('cars.viewMyCars');
+    Route::delete('/cars/{car}', [CarController::class, 'deleteCar'])->name('cars.delete');
 
 });
 

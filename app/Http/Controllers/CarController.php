@@ -15,7 +15,7 @@ class CarController extends Controller
     }
 
     public function store(Request $request)
-{
+    {
     $newCar = new Car();
     $newCar->user_id = auth()->id();
     $newCar->license_plate = $request->license_plate;
@@ -33,6 +33,18 @@ class CarController extends Controller
     $newCar->save();
 
     return redirect()->route('cars.index')->with('success', 'Auto succesvol toegevoegd!');
-}
+    }
 
+    public function viewMyCars(){
+        $user = auth()->user();
+        $cars = Car::all();
+
+        return view('cars.view')->with(['cars' => $cars,]);
+    }
+
+    public function deleteCar(Car $car){
+        $car->delete();
+
+        return redirect()->route('cars.viewMyCars')->with('success', 'Car succesvol verwijderd!');
+    }
 }
