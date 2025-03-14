@@ -19,6 +19,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/cars/index/', [CarController::class, 'index'])->name('cars.index');
 
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/cars/main/', [CarController::class, 'main'])->name('cars.main');
+
+});
+
 Route::post('/cars/create/', [CarController::class, 'store'])->name('cars.store');
 
 require __DIR__.'/auth.php';

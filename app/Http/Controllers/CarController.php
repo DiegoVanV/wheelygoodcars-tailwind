@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Car;
 class CarController extends Controller
 {
     public function index(){
         return view('cars.index');
+    }
+
+    public function main(){
+        return view('cars.main');
     }
 
     public function store(Request $request)
