@@ -47,4 +47,22 @@ class CarController extends Controller
 
         return redirect()->route('cars.viewMyCars')->with('success', 'Car succesvol verwijderd!');
     }
+
+    public function searchCar(Request $request) {
+        $licensePlate = $request->input('license_plate'); // Haalt ingevoerde kenteken op
+
+        $car = Car::where('license_plate', $licensePlate)->first(); // Zoek auto op kenteken
+
+        if (!$car) {
+            return redirect()->route('cars.index')->with('error', 'Auto niet gevonden!');
+        }
+
+        return redirect()->route('cars.show', ['car' => $car->id]); // Stuur door naar carInfo
+    }
+
+    public function show(Car $car) {
+        return view('cars.carInfo', ['car' => $car]);
+    }
+
+
 }

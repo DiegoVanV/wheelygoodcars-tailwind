@@ -46,5 +46,36 @@
         <div class="max-w-7xl mx-auto px-4">
             {{ $slot }}
         </div>
+
+        <audio id="backgroundSound">
+            <source src="{{ asset('sounds/notification.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let sound = document.getElementById("backgroundSound");
+                let hasInteracted = false;
+
+                function playSound() {
+                    sound.play().catch(error => console.log("Autoplay geblokkeerd: " + error));
+                }
+
+                function startPlaying() {
+                    if (!hasInteracted) {
+                        hasInteracted = true;
+                        playSound(); // Speel direct af bij eerste interactie
+                        setInterval(playSound, 1000); // Daarna elke 10 seconden
+                        document.removeEventListener("click", startPlaying);
+                        document.removeEventListener("keydown", startPlaying);
+                    }
+                }
+
+                // Wacht op eerste interactie (klik of toets)
+                document.addEventListener("click", startPlaying);
+                document.addEventListener("keydown", startPlaying);
+            });
+        </script>
+
     </body>
 </html>

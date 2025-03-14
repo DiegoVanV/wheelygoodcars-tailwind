@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex justify-center items-center h-[600px]">
-        <form action="{{ route('cars.store') }}" method="POST" class="w-[600px] ">
+        <form action="{{ route('cars.search') }}" method="POST" class="w-[600px]">
             @csrf
             <div class="flex border border-black rounded-md overflow-hidden">
                 <label for="license_plate" class="bg-blue-600 text-white px-4 py-4 flex items-center">NL</label>
