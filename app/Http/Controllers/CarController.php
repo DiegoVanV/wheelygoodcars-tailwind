@@ -38,8 +38,10 @@ class CarController extends Controller
     public function viewMyCars(){
         $user = auth()->user();
         $cars = Car::all();
+        $mycars = Car::where('user_id', auth()->id())->get();
 
-        return view('cars.view')->with(['cars' => $cars,]);
+
+        return view('cars.view')->with(['cars' => $mycars,]);
     }
 
     public function deleteCar(Car $car){
