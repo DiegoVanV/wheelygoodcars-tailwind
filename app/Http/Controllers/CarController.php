@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 class CarController extends Controller
 {
-    public function index(){
-        return view('cars.index');
+    public function index() {
+        $cars = Car::all();
+        return view('cars.index', compact('cars'));
     }
+
 
     public function main(){
         return view('cars.main');
@@ -65,6 +67,8 @@ class CarController extends Controller
     public function show(Car $car) {
         return view('cars.carInfo', ['car' => $car]);
     }
+
+
 
 
 }
