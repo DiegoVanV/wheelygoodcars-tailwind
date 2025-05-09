@@ -20,10 +20,10 @@
                 <a class="text-lg text-white min-w-48" href="{{ route('home') }}"><strong class="text-orange-500 text-bold">Wheely</strong> good cars<strong class="text-orange-500 text-bold">!</strong></a>
                 <div class="flex justify-between w-full" id="navbarNav">
                     <ul class="flex items-end">
-                        <li class="mr-4"><a class="text-white hover:text-gray-300" href="{{route ('cars.index')}}">Alle auto's</a></li>
+                        <li class="mr-4"><a class="text-white hover:text-gray-300" href="{{route ('cars.viewAllCars')}}">Alle auto's</a></li>
                         @auth
                             <li class="mr-4"><a class="text-white hover:text-gray-300" href="{{route ('cars.viewMyCars')}}">Mijn aanbod</a></li>
-                            <li class="mr-4"><a class="text-white hover:text-gray-300" href="{{route ('cars.main')}}">Aanbod plaatsen</a></li>
+                            <li class="mr-4"><a class="text-white hover:text-gray-300" href="{{route ('goToForm')}}">Aanbod plaatsen</a></li>
                         @endauth
                     </ul>
                     <ul class="flex">
@@ -46,36 +46,6 @@
         <div class="max-w-7xl mx-auto px-4">
             {{ $slot }}
         </div>
-
-        <audio id="backgroundSound">
-            <source src="{{ asset('sounds/notification.mp3') }}" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                let sound = document.getElementById("backgroundSound");
-                let hasInteracted = false;
-
-                function playSound() {
-                    sound.play().catch(error => console.log("Autoplay geblokkeerd: " + error));
-                }
-
-                function startPlaying() {
-                    if (!hasInteracted) {
-                        hasInteracted = true;
-                        playSound(); // Speel direct af bij eerste interactie
-                        setInterval(playSound, 1000); // Daarna elke 10 seconden
-                        document.removeEventListener("click", startPlaying);
-                        document.removeEventListener("keydown", startPlaying);
-                    }
-                }
-
-                // Wacht op eerste interactie (klik of toets)
-                document.addEventListener("click", startPlaying);
-                document.addEventListener("keydown", startPlaying);
-            });
-        </script>
 
     </body>
 </html>

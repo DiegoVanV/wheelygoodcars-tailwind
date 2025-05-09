@@ -11,7 +11,7 @@ class CarController extends Controller
     }
 
     public function main(){
-        return view('cars.main');
+        return view('cars.form-step1');
     }
 
     public function store(Request $request)
@@ -35,14 +35,25 @@ class CarController extends Controller
     return redirect()->route('cars.index')->with('success', 'Auto succesvol toegevoegd!');
     }
 
-    public function viewMyCars(){
+    // View my cars
+    public function viewMyCars()
+    {
         $user = auth()->user();
-        $cars = Car::all();
-        $mycars = Car::where('user_id', auth()->id())->get();
 
+        $mycars = Car::where('user_id', $user->id)->get();
 
-        return view('cars.view')->with(['cars' => $mycars,]);
+        return view('cars.view')->with(['cars' => $mycars]);
     }
+
+
+    // view all cars
+    public function viewAllCars(){
+        $cars = Car::all();
+
+        return view('cars.viewAll')->with(['cars' => $cars,]);
+    }
+
+
 
     public function deleteCar(Car $car){
         $car->delete();
@@ -65,6 +76,42 @@ class CarController extends Controller
     public function show(Car $car) {
         return view('cars.carInfo', ['car' => $car]);
     }
+
+    public function showDetailPage($id)
+    {
+        $car = Car::findOrFail($id); // Haalt de auto op of geeft een 404-fout
+        return view('cars.show', ['car' => $car]);
+    }
+
+    public function goToForm(){
+        return view('cars.stepone');
+    }
+
+    public function postStep1(Request $request)
+    {
+        // Validate input
+        $validated = $request->validate([
+            'license_plate' => 'required|string|max:10',
+        ]);
+
+        // Store the license plate in the session
+        session(['form.license_plate' => $validated['license_plate']]);
+
+        // Redirect to step 2
+        return redirect()->route('form.step2');
+    }
+
+    // Step 2 - Show the information from session
+    public function step2()
+    {
+        // Check if the license plate is in the session
+        if (!session()->has('form.license_plate')) {
+            return redirect()->route('form.step1')->with('error', 'Please enter a license plate first.');
+        }
+
+        return view('cars.steptwo'); // Updated to cars.steptwo
+    }
+
 
 
 }

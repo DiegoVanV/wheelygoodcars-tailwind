@@ -1,7 +1,6 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
         <h1 class="text-2xl font-bold mb-6">Nieuw aanbod</h1>
-
         <form action="{{ route('cars.store') }}" method="POST" class="space-y-6">
             @csrf
 
@@ -9,7 +8,7 @@
                 <label for="license_plate" class="bg-blue-600 text-white px-4 py-4 flex items-center">NL</label>
                 <input type="text" name="license_plate" id="license_plate"
                        class="flex-1 px-4 py-4 bg-yellow-400 text-black text-lg focus:outline-none text-center font-bold"
-                       placeholder="Voer kenteken in" value="{{ old('license_plate') }}" required>
+                       placeholder="Voer kenteken in" value="{{ session('form.license_plate') }}" required>
             </div>
 
             <div class="grid grid-cols-3 gap-4">
