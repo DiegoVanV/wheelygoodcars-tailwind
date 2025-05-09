@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 class CarController extends Controller
 {
-    public function index(){
-        return view('cars.index');
+    public function index() {
+        $cars = Car::all();
+        return view('cars.index', compact('cars'));
     }
+
 
     public function main(){
         return view('cars.form-step1');
@@ -111,6 +113,8 @@ class CarController extends Controller
 
         return view('cars.steptwo'); // Updated to cars.steptwo
     }
+
+
 
 
 
