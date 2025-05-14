@@ -23,6 +23,8 @@
                             <p><span class="font-semibold">Merk:</span> {{ $car->brand }}</p>
                             <p><span class="font-semibold">Prijs:</span> €{{ number_format($car->price, 0, ',', '.') }}</p>
                             <p><span class="font-semibold">Kilometers:</span> {{ number_format($car->mileage, 0, ',', '.') }} km</p>
+                            <p><span class="font-semibold">Weergave:</span> {{ number_format($car->views, 0, ',', '.') }}</p>
+
                         </div>
 
                         <!-- Knoppen -->

@@ -31,7 +31,7 @@ class CarController extends Controller
     $newCar->weight = $request->weight;
     $newCar->color = $request->color;
     $newCar->sold_at = $request->sold_at;
-    $newCar->views = 0;
+    $newCar->views = $request->views;
     $newCar->save();
 
     return redirect()->route('cars.index')->with('success', 'Auto succesvol toegevoegd!');
