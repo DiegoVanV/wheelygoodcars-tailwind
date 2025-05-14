@@ -65,6 +65,7 @@
                 <div class="col-span-3">
                     <label for="image">Afbeelding:</label>
                     <input type="file" name="image">
+                    <p class="text-red-600 text-xs">Als u niks invoert dan krijgt de auto een placeholder</p>
                 </div>
 
                 <input type="hidden" name="views" value="0">
