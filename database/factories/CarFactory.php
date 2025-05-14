@@ -31,6 +31,7 @@ class CarFactory extends Factory
             'production_year' => rand(1980, 2025),
             'weight' => rand(850, 4000),
             'color' => fake()->randomElement(['red', 'blue', 'green', 'yellow', 'purple', 'black', 'white']),
+            
             // image kan hier later worden toegevoegd
             'sold_at' => fake()->dateTime(),
             'views' => rand(0, 10000),

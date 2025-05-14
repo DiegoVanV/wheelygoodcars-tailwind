@@ -6,8 +6,11 @@
             @foreach ($cars as $car)
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                     <!-- Afbeelding -->
-                    <div class="h-40 bg-gray-200 flex items-center justify-center">
-                        <img src="{{ asset('image.jpg') }}" alt="Car Image" class="object-cover h-full w-full">
+                    <div class="h-40 bg-gray-200 flex overflow-hidden justify-center">
+                        <img src="{{ $car->image_url }}"
+                        alt="{{ $car->brand }} {{ $car->model }}"
+                        class=" h-fit w-full object-contain"
+                        >
                     </div>
 
                     <!-- Inhoud -->

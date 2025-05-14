@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
         <h1 class="text-2xl font-bold mb-6">Nieuw aanbod</h1>
-        <form action="{{ route('cars.store') }}" method="POST" class="space-y-6">
+        <form action="{{ route('cars.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
             @csrf
 
             <div class="flex border border-black rounded-md overflow-hidden">
@@ -62,6 +62,13 @@
                         <input type="number" name="price" value="{{ old('price') }}" min="0" step="0.01" required class="w-full px-4 py-3 border rounded-r-md bg-gray-100 text-center"/>
                     </div>
                 </div>
+                <div class="col-span-3">
+                    <label for="image">Afbeelding:</label>
+                    <input type="file" name="image">
+                </div>
+
+                <input type="hidden" name="views" value="0">
+
             </div>
 
             <button type="submit" class="w-full py-4 bg-orange-600 text-white font-semibold rounded-md text-lg hover:bg-orange-700 transition">Aanbod afronden</button>
