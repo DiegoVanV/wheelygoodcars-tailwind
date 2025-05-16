@@ -12,7 +12,7 @@
                     <div class="mb-4 flex items-center">
                         <label for="email" class="block text-sm font-medium text-gray-700 w-1/3">E-mailadres:</label>
                         <div class="w-2/3">
-                        <input type="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500" id="email" placeholder="name@example.com"></div>
+                        <input type="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500" id="email" placeholder="PieterNigel@example.com"></div>
                     </div>
                     <div class="mb-4 flex items-center">
                         <label for="password" class="block text-sm font-medium text-gray-700 w-1/3">Wachtwoord:</label>
