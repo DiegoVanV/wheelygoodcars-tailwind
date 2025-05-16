@@ -18,6 +18,13 @@ class CarController extends Controller
 
     public function store(Request $request)
     {
+
+    $imagePath = null;
+
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('car_images', 'public');
+    }
+
     $newCar = new Car();
     $newCar->user_id = auth()->id();
     $newCar->license_plate = $request->license_plate;
@@ -30,8 +37,9 @@ class CarController extends Controller
     $newCar->production_year = $request->production_year;
     $newCar->weight = $request->weight;
     $newCar->color = $request->color;
+    $newCar->image = $imagePath;
     $newCar->sold_at = $request->sold_at;
-    $newCar->views = 0;
+    $newCar->views = $request->views;
     $newCar->save();
 
     return redirect()->route('cars.viewAllCars')->with('success', 'Auto succesvol toegevoegd!');

@@ -12,7 +12,10 @@
         <p>Weergaven: {{ $car->views }}</p>
 
         @if($car->image)
-            <img src="{{ asset('img' . $car->image) }}" alt="Auto afbeelding" class="mt-4 rounded-lg shadow-lg">
+                        <img src="{{ $car->image_url }}"
+                        alt="{{ $car->brand }} {{ $car->model }}"
+                        class=" h-48 w-48 object-contain"
+                        >
         @endif
 
         <a href="{{ route('cars.viewAllCars') }}" class="mt-4 block text-blue-500 hover:underline">Terug naar overzicht</a>

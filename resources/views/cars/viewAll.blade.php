@@ -19,8 +19,11 @@
             @foreach ($cars as $car)
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                     <!-- Afbeelding -->
-                    <div class="h-40 bg-gray-200 flex items-center justify-center">
-                        <img src="{{ asset('image.jpg') }}" alt="Car Image" class="object-cover h-full w-full">
+                    <div class="h-40 bg-gray-200 flex overflow-hidden justify-center">
+                        <img src="{{ $car->image_url }}"
+                        alt="{{ $car->brand }} {{ $car->model }}"
+                        class=" h-fit w-full object-contain"
+                        >
                     </div>
 
                     <!-- Inhoud -->
@@ -36,6 +39,8 @@
                             <p><span class="font-semibold">Merk:</span> {{ $car->brand }}</p>
                             <p><span class="font-semibold">Prijs:</span> €{{ number_format($car->price, 0, ',', '.') }}</p>
                             <p><span class="font-semibold">Kilometers:</span> {{ number_format($car->mileage, 0, ',', '.') }} km</p>
+                            <p><span class="font-semibold">Weergave:</span> {{ number_format($car->views, 0, ',', '.') }}</p>
+
                         </div>
 
                         <!-- Knoppen -->
