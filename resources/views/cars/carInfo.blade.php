@@ -14,7 +14,7 @@
         @if($car->image)
                         <img src="{{ $car->image_url }}"
                         alt="{{ $car->brand }} {{ $car->model }}"
-                        class=" h-fit w-full object-contain"
+                        class=" h-48 w-48 object-contain"
                         >
         @endif
 
