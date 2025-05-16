@@ -34,7 +34,7 @@ class CarController extends Controller
     $newCar->views = 0;
     $newCar->save();
 
-    return redirect()->route('cars.index')->with('success', 'Auto succesvol toegevoegd!');
+    return redirect()->route('cars.viewAllCars')->with('success', 'Auto succesvol toegevoegd!');
     }
 
     // View my cars

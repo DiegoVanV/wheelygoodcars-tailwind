@@ -15,6 +15,6 @@
             <img src="{{ asset('img' . $car->image) }}" alt="Auto afbeelding" class="mt-4 rounded-lg shadow-lg">
         @endif
 
-        <a href="{{ route('cars.viewMyCars') }}" class="mt-4 block text-blue-500 hover:underline">Terug naar overzicht</a>
+        <a href="{{ route('cars.viewAllCars') }}" class="mt-4 block text-blue-500 hover:underline">Terug naar overzicht</a>
     </div>
 </x-app-layout>

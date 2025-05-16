@@ -2,6 +2,19 @@
     <div class="max-w-7xl mx-auto p-6">
         <h2 class="text-2xl font-bold mb-4">Alle Auto's</h2>
 
+        <div class="flex justify-center items-center h-[200px]">
+            <form action="{{ route('cars.search') }}" method="POST" class="w-[600px]">
+                @csrf
+                <div class="flex border border-black rounded-md overflow-hidden">
+                    <label for="license_plate" class="bg-blue-600 text-white px-4 py-4 flex items-center">NL</label>
+                    <input type="text" name="license_plate" id="license_plate"
+                        class="flex-1 px-4 py-4 bg-yellow-400 text-black text-lg focus:outline-none text-center font-bold"
+                        placeholder="Voer kenteken in" required>
+                    <button type="submit" class="bg-orange-500 text-white px-6 py-4 text-lg">Go!</button>
+                </div>
+            </form>
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
             @foreach ($cars as $car)
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
