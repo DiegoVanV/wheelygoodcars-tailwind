@@ -20,4 +20,55 @@
 
         <a href="{{ route('cars.viewAllCars') }}" class="mt-4 block text-blue-500 hover:underline">Terug naar overzicht</a>
     </div>
+
+
+    {{-- Advertentie --}}
+    <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white shadow-lg relative">
+            <button id="close-popup" class="block w-full h-full">
+                <img id="popup-image" src="" alt="Advertentie" class="w-full h-full object-cover">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let popupVisible = true;
+
+        // Functie om een willekeurige afbeelding te selecteren
+        function getRandomImage() {
+            const randomNumber = Math.floor(Math.random() * 2) + 1;
+            return `../../../ad${randomNumber}.jpg`; // Bouw de bestandsnaam op
+        }
+
+        // Functie om de pop-up te tonen/verbergen
+        function togglePopup() {
+            const popup = document.getElementById('popup');
+            const popupImage = document.getElementById('popup-image');
+
+            if (popupVisible) {
+                // Stel een willekeurige afbeelding in
+                popupImage.src = getRandomImage()
+                popup.classList.remove('hidden');
+            } else {
+                popup.classList.add('hidden');
+            }
+        }
+
+        // Sluitknop-logica
+        document.getElementById('close-popup').addEventListener('click', () => {
+            popupVisible = false;
+            togglePopup();
+            setTimeout(() => {
+                popupVisible = true;
+                togglePopup();
+            }, 10000);
+        });
+
+        // Initialiseer de pop-up bij het laden van de pagina
+        document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            togglePopup();
+        }, 10000);
+        });
+    </script>
 </x-app-layout>
